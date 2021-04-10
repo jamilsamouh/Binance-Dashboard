@@ -16,4 +16,6 @@ pip install -r requirements.txt
 ```bash
 python heatmap_binning_app.py
 ``` 
+4- Prses on the HTTPS:// URL that is provided to open up the dashboard and you can check the terminal for the Time Ellapsed for reading the data and plotting each graph
+
 **Important:** you must stop running the script or it will run FOREVER so to do that press `CTRL+C` on the command line
