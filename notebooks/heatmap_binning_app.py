@@ -13,13 +13,13 @@ import time
 app = dash.Dash(__name__)
 
 ######################################## READING DATA ##################################################################
-start = time.time()
+start = time.perf_counter()
 heatmap_df = pd.read_excel("../data/df_heatmap.xlsx", index_col=0)  # Read the Heatmap Data
 market_df = pd.read_excel('../data/df_market_data.xlsx')  # Read the Market Data
 market_df.rename(columns={'Unnamed: 0': 'timestamp'}, inplace=True)
 dates = market_df["timestamp"].tolist()  # Save the dates
 i = 0  # Counter
-end = time.time()
+end = time.perf_counter()
 print(f"Time elapsed in milliseconds for reading the data: {round((end - start) * 1000)}")
 print()
 
@@ -96,7 +96,7 @@ def update_graph_scatter(n_intervals):
         data, layout (dict): return a dictionary of the data and layouts and send it to the graph to be updated
     """
     
-    start = time.time()
+    start = time.perf_counter()
 
     #  Read the counter
 
@@ -113,8 +113,8 @@ def update_graph_scatter(n_intervals):
     if i != len(dates):
         i+=1
     else:
-        end = time.time()
-        print(f"Time elapsed in milliseconds: { round( (end-start) * 1000 ) }")
+        end = time.perf_counter()
+        print(f"Time elapsed in milliseconds for Executing the graph: { round( (end-start) * 1000 ) }")
         return 
     
     # Find the global min and max based on the market dataframe 
@@ -179,7 +179,7 @@ def update_graph_scatter(n_intervals):
         xaxis_range=["2021-04-03 19:33:00","2021-04-03 19:33:25"],
     )
     
-    end = time.time()
+    end = time.perf_counter()
 
     print(f"Time elapsed in milliseconds for Executing the graph: { round( (end-start) * 1000 ) }")
 
